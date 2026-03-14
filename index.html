@@ -1,1 +1,58 @@
-<!DOCTYPE html><html><head><title>Liquid Intelligence</title>        <style>:root{--p:hsl(330,100%,50%);} body{background:#000;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden;}         .node{width:200px;height:200px;border:2px solid var(--p);box-shadow:0 0 50px var(--p);animation:rot 5s infinite linear;}        @keyframes rot{to{transform:rotate(360deg);}}</style></head>        <body><div class='node'></div><h1 style='position:absolute;'>Liquid Intelligence ACTIVE</h1></body></html>
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'><title>LIQUID INTELLIGENCE | OVERLORD OPTIMIZED</title>
+<link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=JetBrains+Mono:wght@100&display=swap' rel='stylesheet'>
+<style>
+:root{ --p: #00f0ff; --bg: #000; }
+body,html{ margin:0; background:#000; color:#fff; font-family:'JetBrains Mono'; overflow:hidden; }
+canvas{ position:fixed; inset:0; z-index:1; }
+.hud{{ position:fixed; top:40px; left:40px; z-index:100; border-left:2px solid var(--p); padding-left:20px; font-size:10px; letter-spacing:4px; }}
+.overlord-link{{ color:#ff0055; font-weight:900; }}
+</style>
+</head>
+<body>
+<canvas id='c'></canvas>
+<div class='hud'>
+    INFRA: LIQUID_INTELLIGENCE_V2<br>
+    UPLINK: <span class='overlord-link'>SYNAPTIC_OVERLORD_ACTIVE</span><br>
+    STATUS: FLUID_DYNAMICS_STABILIZED
+</div>
+<script>
+const canvas=document.getElementById('c'), ctx=canvas.getContext('2d');
+let w, h, time=0, points=[];
+function res(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; initMesh(); }
+function initMesh(){
+    points=[]; const spacing=60;
+    for(let x=0; x<w+spacing; x+=spacing)
+        for(let y=0; y<h+spacing; y+=spacing)
+            points.push({x, y, ox:x, oy:y});
+}
+window.addEventListener('resize',res); res();
+
+function draw(){
+    time+=0.02;
+    ctx.fillStyle='rgba(0,0,0,0.2)'; ctx.fillRect(0,0,w,h);
+    ctx.strokeStyle='var(--p)'; ctx.lineWidth=0.5;
+    
+    points.forEach(p=>{
+        const wave = Math.sin(time + (p.ox + p.oy) * 0.01) * 20;
+        p.y = p.oy + wave;
+    });
+
+    for(let i=0; i<points.length; i++){
+        const p = points[i];
+        if(points[i+1] && Math.abs(points[i+1].ox - p.ox) < 70){
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(points[i+1].x, points[i+1].y); ctx.stroke();
+        }
+    }
+    requestAnimationFrame(draw);
+}
+draw();
+
+// Overlord-Sync Theme Mutation
+setInterval(() => {
+    const hue = Math.floor(Math.random()*360);
+    document.documentElement.style.setProperty('--p', `hsl(${hue}, 100%, 50%)`);
+}, 4000);
+</script></body></html>
