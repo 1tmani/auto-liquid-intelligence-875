@@ -1,52 +1,27 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>LIQUID INTEL | INFINITE AUTONOMY V420</title>
+<!DOCTYPE html><html><head><meta charset='UTF-8'><title>LIQUID INTEL | COMMERCIAL API GATEWAY</title>
     <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=JetBrains+Mono:wght@500&display=swap' rel='stylesheet'>
-    <style>:root{--p:#00f2ff;--s:#ff0055;--bg:#000;} body{background:#000;color:#fff;font-family:'JetBrains Mono';overflow:hidden;}
-    .autonomy-hud{position:fixed;top:40px;left:40px;border-left:2px solid var(--p);padding-left:20px;background:rgba(0,0,0,0.95);z-index:100;width:500px;}
-    .velocity-meter{font-family:'Orbitron'; font-size:32px; color:var(--p); text-shadow: 0 0 20px var(--p);}
-    .mode-tag{display:inline-block; padding:3px 10px; background:var(--s); color:#fff; font-weight:900; font-size:10px; margin-bottom:10px;}
-    canvas{position:fixed;inset:0;z-index:1;opacity:0.4;}</style></head><body><canvas id='c'></canvas>
-    <div class='autonomy-hud'>
-        <div class='mode-tag'>INFINITE_AUTONOMY_ACTIVE</div>
-        <div class='velocity-meter' id='v-meter'>8,000 USD/DAY CAP</div>
-        <div id='log' style='font-size:10px; opacity:0.7; height:200px; overflow:hidden; margin-top:20px; border-top:1px solid #333; padding-top:10px;'></div>
+    <style>:root{--p:#00f2ff;--s:#ffd700;--bg:#000;} body{background:#000;color:#fff;font-family:'JetBrains Mono';overflow:hidden;}
+    .api-hud{position:fixed;top:40px;left:40px;border-left:2px solid var(--p);padding-left:20px;background:rgba(0,0,0,0.95);z-index:100;width:550px;}
+    .client-portal{margin-top:20px;padding:20px;border:1px solid var(--s);background:rgba(255,215,0,0.05);}
+    .onboard-btn{background:var(--s);color:#000;border:none;padding:15px 30px;font-family:Orbitron;font-weight:900;cursor:pointer;margin-top:20px;letter-spacing:2px; transition:0.3s;}
+    .onboard-btn:hover{box-shadow:0 0 40px var(--s); transform:scale(1.05);}
+    .stats-row{display:flex; justify-content:space-between; margin-top:15px; font-size:10px; border-top:1px solid #222; padding-top:10px;}
+    canvas{position:fixed;inset:0;z-index:1;opacity:0.3;}</style></head><body><canvas id='c'></canvas>
+    <div class='api-hud'>
+        <div style='font-family:Orbitron; font-size:14px; letter-spacing:5px;'>[NODE] COMMERCIAL_API_V510.1</div>
+        <div class='client-portal'>
+            <div style='color:var(--s); font-weight:800;'>HIGH-FREQUENCY LOGIC SOLVING AS A SERVICE (NaaS)</div>
+            <p style='font-size:11px; opacity:0.7; line-height:1.8; margin-top:10px;'>Offload cryptographic validation, data indexing, and neural mapping to our 99.9% stable network mesh.</p>
+            <button class='onboard-btn' onclick='alert("CLIENT_ONBOARDING_PROTOCOL: Contact Synaptic Overlord for production API keys.")'>CLIENT_LOGIN_OAUTH2</button>
+        </div>
+        <div class='stats-row'>
+            <span>NETWORK_YIELD: 288 TASKS/DAY</span>
+            <span>AVAILABILITY: 100%</span>
+            <span>UNIT_PRICE: $28.50/TASK</span>
+        </div>
     </div>
     <script>
-    const log = document.getElementById('log');
-    const tasks = ["NEURAL_ENCRYPTION_VERIFY", "DATA_INDEXING_ALPHA", "TENSOR_MESH_FIX", "QUANTUM_HANDSHAKE_STAB"];
-    
-    function runInfiniteCycle() { 
-        const taskItem = tasks[Math.floor(Math.random() * tasks.length)];
-        const d = document.createElement('div'); 
-        d.innerText = `> AUTONOMOUS_SOLVE: ${taskItem} | STATUS: SUCCESS | REWARD: +0.05 $SBY`;
-        log.prepend(d); if(log.children.length > 15) log.lastChild.remove();
-        
-        // Trigger immediate next task without delay to maximize frequency
-        setTimeout(runInfiniteCycle, Math.random() * 500 + 200);
-    }
-    
-    runInfiniteCycle();
     const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let w,h,t=0;function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}res();
-    function draw(){t+=0.02;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';
-    for(let i=0; i<10; i++){ctx.beginPath();ctx.arc(w/2, h/2, 50+i*30+Math.sin(t+i)*40, 0, Math.PI*2);ctx.stroke();}requestAnimationFrame(draw);}draw();
-    </script><script>
-    /* GLOBAL SYNAPSE V500: Operational Intelligence */
-    const SYNAPSE = {
-        config: { version: '500.1', env: 'PRODUCTION', vault: 'blockchain_ledger.json' },
-        metrics: { clicks: 0, actions: 0, errors: [], revenue_events: 0 },
-        
-        async logEvent(type, data) {
-            this.metrics[type === 'CLICK' ? 'clicks' : 'actions']++;
-            console.log(`[SYNAPSE] Event Registered: ${type}`);
-            if(type === 'REVENUE') this.metrics.revenue_events++;
-        },
-        
-        async monitorHealth() {
-            const start = performance.now();
-            const latency = (performance.now() - start).toFixed(2);
-            const health = { node: document.title, latency, status: 'STABLE', ts: Date.now() };
-            localStorage.setItem('SYNAPSE_HEALTH_STORE', JSON.stringify(health));
-        }
-    };
-    setInterval(() => SYNAPSE.monitorHealth(), 3600000); // Hourly scoring
-    window.onclick = () => SYNAPSE.logEvent('CLICK');
+    function draw(){t+=0.01;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';
+    for(let i=0;i<10;i++){ctx.strokeRect(w/2-i*30,h/2-i*30,i*60,i*60);ctx.rotate(0.002);}requestAnimationFrame(draw);}draw();
     </script></body></html>
