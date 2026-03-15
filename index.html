@@ -1,59 +1,52 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-<meta charset='UTF-8'><title>LIQUID INTEL | CODING_CORE</title>
-<link href='https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;800&family=Orbitron:wght@900&display=swap' rel='stylesheet'>
+<meta charset='UTF-8'><title>DEINCORE V69 | ULTRA RENDER</title>
+<link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Michroma&family=JetBrains+Mono:wght@100;800&display=swap' rel='stylesheet'>
 <style>
-:root{--p:#7000ff;--s:#00ff75;--bg:#000;}
-body,html{ margin:0; background:#000; color:var(--p); font-family:'JetBrains Mono'; overflow:hidden; }
-canvas{ position:fixed; inset:0; z-index:1; opacity:0.7; }
-.coding-hud{ position:fixed; top:40px; right:40px; z-index:100; text-align:right; border-right:2px solid var(--p); padding-right:20px; font-size:10px; letter-spacing:2px; }
-.learning-progress{ position:fixed; bottom:40px; left:40px; z-index:100; width:300px; }
-.bar-bg{ width:100%; height:4px; background:rgba(112,0,255,0.1); margin-top:10px; }
-.bar-fill{ height:100%; background:var(--p); width:0%; box-shadow:0 0 20px var(--p); transition: width 0.5s; }
-.terminal-feed{ position:fixed; top:40px; left:40px; width:300px; height:200px; overflow:hidden; font-size:9px; opacity:0.5; pointer-events:none; }
-.advancement-tag{ color:var(--s); font-weight:800; animation: blink 1s infinite; }
-@keyframes blink{ 50%{ opacity:0; } }
+:root{ --p:#00ff75; --s:#ff0055; --bg:#000; --glass:rgba(255,255,255,0.03); }
+body,html{ margin:0; background:#000; color:#fff; font-family:'Michroma'; overflow-x:hidden; }
+canvas{ position:fixed; inset:0; z-index:1; opacity:0.6; }
+.premium-hud{ position:fixed; top:0; left:0; width:100%; z-index:1000; padding:30px; display:flex; justify-content:space-between; align-items:center; backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,255,117,0.1); }
+.telemetry-box{ background:rgba(0,0,0,0.8); border:1px solid var(--p); padding:15px; font-family:'JetBrains Mono'; font-size:9px; letter-spacing:2px; min-width:250px; }
+.buy-btn{ background:var(--p); color:#000; border:none; padding:15px 40px; font-family:'Orbitron'; font-weight:900; cursor:pointer; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); transition:0.4s; }
+
+section{ min-height:100vh; position:relative; z-index:100; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.product-core{ width:350px; height:350px; border:2px solid var(--p); border-radius:50%; display:flex; align-items:center; justify-content:center; animation: pulse 3s infinite alternate; }
+@keyframes pulse{ from{box-shadow:0 0 20px var(--p);} to{box-shadow:0 0 100px var(--p);} }
+.price-display{ font-family:'Orbitron'; font-size:3rem; margin-top:30px; letter-spacing:10px; color:white; text-shadow:0 0 30px var(--p); }
+.options-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top:40px; width:100%; max-width:600px; }
+.opt-card{ background:var(--glass); border:1px solid rgba(255,255,255,0.1); padding:15px; text-align:center; font-size:10px; cursor:pointer; transition:0.3s; }
+.opt-card:hover{ border-color:var(--p); background:rgba(0,255,117,0.05); }
 </style>
 </head>
 <body>
-<div class='terminal-feed' id='feed'></div>
-<div class='coding-hud'>
-    NODE: LIQUID_INTEL_V73<br>
-    CORE: CODING_CAPABILITY_ACTIVE<br>
-    PROTOCOL: <span id='protocol'>IDLE</span><br>
-    ADVANCEMENT: <span class='advancement-tag' id='adv'>STABLE</span>
-</div>
-<div class='learning-progress'>
-    LEARNING_PROGRESS: <span id='l-val'>0</span>%<br>
-    <div class='bar-bg'><div class='bar-fill' id='bar'></div></div>
-</div>
 <canvas id='c'></canvas>
+<nav class='premium-hud'>
+    <div class='telemetry-box'>
+        [NETWORK_STATS] ACTIVE<br>
+        VELOCITY: <span id='v-val'>9241</span> Q-m/s<br>
+        DEMAND_INDEX: <span id='d-val'>HIGH</span>
+    </div>
+    <button class='buy-btn'>PRE-ORDER V69</button>
+</nav>
+<section>
+    <div class='product-core'><h1 style='font-family:Orbitron; letter-spacing:10px;'>V69_CORE</h1></div>
+    <div class='price-display' id='price-val'>$8,399</div>
+    <div class='options-grid'>
+        <div class='opt-card'><h3>SILENT</h3><p>Optimized Cooling</p></div>
+        <div class='opt-card' style='border-color:var(--p)'><h3>HYPER</h3><p>Peak Throughput</p></div>
+        <div class='opt-card'><h3>QUANTUM</h3><p>Encrypted Sync</p></div>
+    </div>
+    <p style='margin-top:20px; font-size:10px; opacity:0.5; letter-spacing:5px;'>MOST IN DEMAND: HYPER_VARIANT</p>
+</section>
 <script>
-const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
-let w,h,t=0,progress=0; function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}res();
-const feed=document.getElementById('feed');
-const codes=["re-encoding mesh...","optimizing tensor_flow.js","injecting unique_logic_v73","mapping recursive_nodes","advancing protocol_theta"];
-function addCode(){ const d=document.createElement('div'); d.innerText='> '+codes[Math.floor(Math.random()*codes.length)]; feed.prepend(d); if(feed.children.length>15)feed.lastChild.remove(); }
-setInterval(addCode, 2000);
+const canvas=document.getElementById('c'), ctx=canvas.getContext('2d');
+let w, h, t=0; function res(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; } res();
 function draw(){
-    t+=0.05; ctx.fillStyle='rgba(0,0,0,0.2)'; ctx.fillRect(0,0,w,h);
-    ctx.strokeStyle='var(--p)'; ctx.lineWidth=1;
-    progress = (progress + 0.1) % 100;
-    document.getElementById('l-val').innerText = progress.toFixed(1);
-    document.getElementById('bar').style.width = progress + '%';
-    if(progress > 90) {
-        document.getElementById('protocol').innerText = 'RECOMBINATION_ACTIVE';
-        document.getElementById('adv').innerText = 'UNIQUE_PHASE_SHIFT';
-    } else {
-        document.getElementById('protocol').innerText = 'PATTERN_SCANNING';
-        document.getElementById('adv').innerText = 'STABLE';
-    }
-    for(let i=0;i<25;i++){
-        let size = i*15*(progress/50);
-        ctx.strokeRect(w/2-size/2,h/2-size/2,size,size);
-        ctx.rotate(0.002*Math.sin(t));
-    }
-    requestAnimationFrame(draw);
-}draw();
+    t+=0.01; ctx.fillStyle='rgba(0,0,0,0.1)'; ctx.fillRect(0,0,w,h);
+    ctx.strokeStyle='var(--p)'; ctx.beginPath();
+    for(let i=0; i<5; i++){ let r = 100 + i*30 + Math.sin(t+i)*20; ctx.arc(w/2, h/2, r, 0, Math.PI*2); }
+    ctx.stroke(); requestAnimationFrame(draw);
+} draw();
 </script></body></html>
