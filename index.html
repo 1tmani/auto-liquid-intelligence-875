@@ -35,4 +35,28 @@
     const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let w,h,t=0;function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}res();
     function draw(){t+=0.01;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';
     for(let i=0;i<8;i++){ctx.strokeRect(w/2-i*30,h/2-i*30,i*60,i*60);ctx.rotate(0.001);}requestAnimationFrame(draw);}draw();
-    </script><div style='border:1px solid #00f2ff; padding:10px; margin-top:10px; font-family:Orbitron; font-size:12px;'><div style='color:#00f2ff'>● OUTPUT GENERATED</div><div style='color:#00f2ff'>● HASH CREATED</div></div><div style='display:none'>ROLE_FROZEN</div></body></html>
+    </script><div style='border:1px solid #00f2ff; padding:10px; margin-top:10px; font-family:Orbitron; font-size:12px;'><div style='color:#00f2ff'>● OUTPUT GENERATED</div><div style='color:#00f2ff'>● HASH CREATED</div></div><div style='display:none'>ROLE_FROZEN</div><script>
+        /* V360 MUSICAL PROOF: Hash-to-Frequency Engine */
+        const NEURAL_AUDIO = {
+            ctx: null,
+            init() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+            playHash(hash) {
+                this.init();
+                const tone = parseInt(hash.substring(0, 8), 16) % 1000 + 200;
+                const osc = this.ctx.createOscillator();
+                const g = this.ctx.createGain();
+                osc.frequency.setValueAtTime(tone, this.ctx.currentTime);
+                g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.5);
+                osc.connect(g).connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.5);
+                console.log('🎵 V360: Playing Frequency:', tone);
+            }
+        };
+        // Extend existing produceOutput to trigger audio
+        const originalProduce = produceOutput;
+        produceOutput = function() {
+            originalProduce();
+            const lastHash = "f3ccca6570a2f0fd17dce3b8a1f15b348fa52a7ec3fcaeeb425d63aec59533da";
+            NEURAL_AUDIO.playHash(lastHash);
+        };
+        </script></body></html>
