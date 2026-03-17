@@ -1,92 +1,42 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>PRODUCER | CORE ROLE 1</title>
-    <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=JetBrains+Mono:wght@500&display=swap' rel='stylesheet'>
-    <style>:root{--p:#00f2ff;--bg:#000;} body{background:#000;color:#fff;font-family:'JetBrains Mono';overflow:hidden;}
-    .hud{position:fixed;top:40px;left:40px;border-left:2px solid var(--p);padding-left:20px;background:rgba(0,0,0,0.95);z-index:100;width:550px;}
-    .role-tag{display:inline-block; padding:3px 10px; background:var(--p); color:#000; font-weight:900; font-size:10px; margin-bottom:10px; letter-spacing:2px;}
-    .output-card{margin-top:20px; padding:20px; border:1px solid #222; background:rgba(0,242,255,0.02);}
-    .billable-status{font-family:'Orbitron'; font-size:24px; color:var(--p); text-shadow: 0 0 20px var(--p);}
-    #log{height:200px; overflow:hidden; font-size:10px; opacity:0.6; margin-top:20px; border-top:1px solid #333; padding-top:15px;}
-    canvas{position:fixed;inset:0;z-index:1;opacity:0.3;}</style></head><body><canvas id='c'></canvas>
-    <div class='hud'>
-        <div class='role-tag'>PERMANENT_ROLE: PRODUCER</div>
-        <div class='billable-status'>BILLABLE_CAPACITY: ACTIVE</div>
-        <div class='output-card'>
-            <div>CURRENT_JOB: <span id='job'>IDLE</span></div>
-            <div style='font-size:9px; opacity:0.5; margin-top:5px;'>RULE: PRODUCER_NEVER_VERIFIES_SELF</div>
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'><title>INTEL | V100 FLOWING TECH</title>
+<link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=JetBrains+Mono:wght@100;800&display=swap' rel='stylesheet'>
+<style>
+:root{ --p:#7000ff; --s:#00f2ff; --bg:#000; }
+body,html{ margin:0; background:#000; color:#fff; font-family:'JetBrains Mono'; overflow-x:hidden; scroll-behavior:smooth; }
+canvas{ position:fixed; inset:0; z-index:1; }
+
+section{ height:100vh; width:100vw; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:100px; box-sizing:border-box; border-bottom:1px solid rgba(255,255,255,0.05); position:relative; z-index:10; }
+
+.flow-title{ font-family:'Orbitron'; font-size:clamp(3rem, 15vw, 10rem); letter-spacing:45px; text-transform:uppercase; text-shadow: 0 0 50px var(--p); margin:0; }
+
+.dynamic-field{ width:100%; height:50vh; display:flex; gap:20px; overflow-x:auto; padding:50px; scrollbar-width:none; cursor:grab; }
+.dynamic-field::-webkit-scrollbar{ display:none; }
+.tech-lane{ min-width:1000px; height:100%; border:1px solid rgba(112,0,255,0.2); background:rgba(255,255,255,0.01); display:flex; align-items:center; padding:60px; backdrop-filter:blur(30px); }
+
+.hud-footer{ position:fixed; bottom:40px; right:40px; z-index:1000; font-family:'Orbitron'; font-size:9px; letter-spacing:5px; text-align:right; border-right:2px solid var(--s); padding-right:20px; }
+</style>
+</head>
+<body>
+<canvas id='c'></canvas>
+<div class='hud-footer'>NODE_06: FLOWING_TECH_FIELD<br>INTEL_VELOCITY: MAXIMUM<br>STATUS: EVOLVING</div>
+<div class='flagship-container'>
+    <section>
+        <h1 class='flow-title'>FLUID</h1>
+        <p style='margin-top:20px; letter-spacing:15px; opacity:0.4;'>[ NEURAL_INTELLIGENCE_FIELD ]</p>
+    </section>
+    <section>
+        <div class='dynamic-field'>
+            <div class='tech-lane'><h2 style='letter-spacing:10px;'>PROTOCOL_ALPHA</h2><p style='margin-left:40px; opacity:0.5;'>Automated logic synthesis mapped across high-viscosity data streams.</p></div>
+            <div class='tech-lane'><h2 style='letter-spacing:10px; color:var(--s);'>PROTOCOL_BETA</h2><p style='margin-left:40px; opacity:0.5;'>Cross-node neural handshakes stabilized via liquid geometric anchors.</p></div>
         </div>
-        <div id='log'></div>
-    </div>
-    <script>
-    const log=document.getElementById('log'); 
-    const tasks = ["PAYLOAD_PROCESSING", "STRUCTURED_REPAIR", "DATA_TRANSFORM", "TASK_EXECUTION"];
-    
-    function produceOutput() { 
-        const task = tasks[Math.floor(Math.random() * tasks.length)];
-        document.getElementById('job').innerText = task;
-        const hash = "7fad15d21c66ebc43f6c840716a8423f173038c7a505be987e5f783d98513ceb"; 
-        
-        const d = document.createElement('div'); 
-        d.innerHTML = `> [OUTPUT] ${task} GENERATED <br> > [HASH] ${hash} <br> > [STATUS] AWAITING_EXTERNAL_VERIFICATION`;
-        d.style.marginBottom = '15px';
-        log.prepend(d); if(log.children.length > 8) log.lastChild.remove();
-    }
-    setInterval(produceOutput, 6000); produceOutput();
-
-    const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let w,h,t=0;function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}res();
-    function draw(){t+=0.01;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';
-    for(let i=0;i<8;i++){ctx.strokeRect(w/2-i*30,h/2-i*30,i*60,i*60);ctx.rotate(0.001);}requestAnimationFrame(draw);}draw();
-    </script><div style='border:1px solid #00f2ff; padding:10px; margin-top:10px; font-family:Orbitron; font-size:12px;'><div style='color:#00f2ff'>● OUTPUT GENERATED</div><div style='color:#00f2ff'>● HASH CREATED</div></div><div style='display:none'>ROLE_FROZEN</div><script>
-        /* V360 MUSICAL PROOF: Hash-to-Frequency Engine */
-        const NEURAL_AUDIO = {
-            ctx: null,
-            init() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
-            playHash(hash) {
-                this.init();
-                const tone = parseInt(hash.substring(0, 8), 16) % 1000 + 200;
-                const osc = this.ctx.createOscillator();
-                const g = this.ctx.createGain();
-                osc.frequency.setValueAtTime(tone, this.ctx.currentTime);
-                g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.5);
-                osc.connect(g).connect(this.ctx.destination);
-                osc.start(); osc.stop(this.ctx.currentTime + 0.5);
-                console.log('🎵 V360: Playing Frequency:', tone);
-            }
-        };
-        // Extend existing produceOutput to trigger audio
-        const originalProduce = produceOutput;
-        produceOutput = function() {
-            originalProduce();
-            const lastHash = "f3ccca6570a2f0fd17dce3b8a1f15b348fa52a7ec3fcaeeb425d63aec59533da";
-            NEURAL_AUDIO.playHash(lastHash);
-        };
-        </script><script>const AUDIO_SIG = { ctx: null, init() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); }, play() { this.init(); const o = this.ctx.createOscillator(); const g = this.ctx.createGain(); o.frequency.setTargetAtTime(880, this.ctx.currentTime, 0.1); g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.5); o.connect(g).connect(this.ctx.destination); o.start(); o.stop(this.ctx.currentTime + 0.5); } };</script><div id='proof-anchor' style='display:none' data-hash='cb0ff809c311f0d99c992dcd7ae28da5e75f7c299add6502187b3e35a3b876ba'></div><script>
-    /* V280 NEURAL COOLING: Energy Preservation & Cache Purge */
-    const NEURAL_COOLER = {
-        cycleDuration: 3600000, // 1 hour
-        breakDuration: 120000, // 2 minutes
-        isCooling: false,
-        async initiateBreak() {
-            console.log("V280: 1-Hour Peak reached. Initiating Neural Break...");
-            this.isCooling = true;
-
-            // 1. Enter Energy Preservation State
-            document.body.style.filter = 'grayscale(1) brightness(0.3) contrast(0.8)';
-            document.body.style.transition = 'filter 2s';
-            document.body.style.pointerEvents = 'none';
-
-            // 2. Clear Redundant Buffers
-            console.log("V280: Purging visual cache segments...");
-            localStorage.removeItem('TEMP_PARTICLE_BUFFER');
-
-            // 3. Resumption Logic
-            setTimeout(() => {
-                console.log("V280: Cooling complete. Resuming Singularity flow.");
-                document.body.style.filter = 'none';
-                document.body.style.pointerEvents = 'all';
-                this.isCooling = false;
-            }, this.breakDuration);
-        }
-    };
-    // Autonomous Cycle Trigger
-    setInterval(() => NEURAL_COOLER.initiateBreak(), NEURAL_COOLER.cycleDuration);
-    </script></body></html>
+    </section>
+</div>
+<script>
+const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
+let w,h,t=0,pts=[]; function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;pts=[];for(let x=0;x<w+60;x+=60)for(let y=0;y<h+60;y+=60)pts.push({x,y,ox:x,oy:y});}res();
+function draw(){t+=0.05;ctx.fillStyle='rgba(0,0,0,0.2)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';ctx.lineWidth=1;
+pts.forEach(p=>{const wave=Math.sin(t+p.ox*0.01)*30;ctx.beginPath();ctx.arc(p.x,p.oy+wave,1,0,Math.PI*2);ctx.stroke();});requestAnimationFrame(draw);}draw();
+</script></body></html>
