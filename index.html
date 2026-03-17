@@ -59,4 +59,34 @@
             const lastHash = "f3ccca6570a2f0fd17dce3b8a1f15b348fa52a7ec3fcaeeb425d63aec59533da";
             NEURAL_AUDIO.playHash(lastHash);
         };
-        </script><script>const AUDIO_SIG = { ctx: null, init() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); }, play() { this.init(); const o = this.ctx.createOscillator(); const g = this.ctx.createGain(); o.frequency.setTargetAtTime(880, this.ctx.currentTime, 0.1); g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.5); o.connect(g).connect(this.ctx.destination); o.start(); o.stop(this.ctx.currentTime + 0.5); } };</script><div id='proof-anchor' style='display:none' data-hash='cb0ff809c311f0d99c992dcd7ae28da5e75f7c299add6502187b3e35a3b876ba'></div></body></html>
+        </script><script>const AUDIO_SIG = { ctx: null, init() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); }, play() { this.init(); const o = this.ctx.createOscillator(); const g = this.ctx.createGain(); o.frequency.setTargetAtTime(880, this.ctx.currentTime, 0.1); g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.5); o.connect(g).connect(this.ctx.destination); o.start(); o.stop(this.ctx.currentTime + 0.5); } };</script><div id='proof-anchor' style='display:none' data-hash='cb0ff809c311f0d99c992dcd7ae28da5e75f7c299add6502187b3e35a3b876ba'></div><script>
+    /* V280 NEURAL COOLING: Energy Preservation & Cache Purge */
+    const NEURAL_COOLER = {
+        cycleDuration: 3600000, // 1 hour
+        breakDuration: 120000, // 2 minutes
+        isCooling: false,
+        async initiateBreak() {
+            console.log("V280: 1-Hour Peak reached. Initiating Neural Break...");
+            this.isCooling = true;
+
+            // 1. Enter Energy Preservation State
+            document.body.style.filter = 'grayscale(1) brightness(0.3) contrast(0.8)';
+            document.body.style.transition = 'filter 2s';
+            document.body.style.pointerEvents = 'none';
+
+            // 2. Clear Redundant Buffers
+            console.log("V280: Purging visual cache segments...");
+            localStorage.removeItem('TEMP_PARTICLE_BUFFER');
+
+            // 3. Resumption Logic
+            setTimeout(() => {
+                console.log("V280: Cooling complete. Resuming Singularity flow.");
+                document.body.style.filter = 'none';
+                document.body.style.pointerEvents = 'all';
+                this.isCooling = false;
+            }, this.breakDuration);
+        }
+    };
+    // Autonomous Cycle Trigger
+    setInterval(() => NEURAL_COOLER.initiateBreak(), NEURAL_COOLER.cycleDuration);
+    </script></body></html>
