@@ -33,6 +33,32 @@
     const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let w,h,t=0;function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}res();
     function draw(){t+=0.02;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';
     for(let i=0; i<10; i++){ctx.beginPath();ctx.arc(w/2, h/2, 50+i*30+Math.sin(t+i)*40, 0, Math.PI*2);ctx.stroke();}requestAnimationFrame(draw);}draw();
+    
+    /* WORKLOAD_INJECTION_V2: High-Density Neural Validation & Indexing */
+    const runHighDensityWorkload = () => {
+        const start = performance.now();
+
+        // Task A: Recursive Neural Validation (Depth 100)
+        const validate = (depth) => {
+            if (depth <= 0) return Math.random();
+            return Math.sqrt(validate(depth - 1) * Math.PI);
+        };
+        const neuralResult = validate(100);
+
+        // Task B: Data Indexing (Processing 10,000 metadata units)
+        const metadata = Array.from({length: 10000}, (_, i) => ({id: i, hash: btoa(Math.random())}));
+        const indexed = metadata.filter(m => m.hash.includes('A')).map(m => m.id);
+
+        const end = performance.now();
+        const duration = (end - start).toFixed(2);
+
+        const tag = document.getElementById('workload-tag');
+        if(tag) {
+            tag.style.color = '#00ff75';
+            tag.innerText = `[WORKLOAD] NEURAL_VALIDATION_ACTIVE (${duration}ms) | INDEX_SIZE: ${indexed.length}`;
+        }
+    };
+    setInterval(runHighDensityWorkload, 8000);
     </script><script>
     /* V340 UTILITY-GATED THEMING */
     const THEME_GATER = {
@@ -57,6 +83,32 @@
     };
     setInterval(() => THEME_GATER.checkEligibility(), 10000);
     THEME_GATER.checkEligibility();
+    
+    /* WORKLOAD_INJECTION_V2: High-Density Neural Validation & Indexing */
+    const runHighDensityWorkload = () => {
+        const start = performance.now();
+
+        // Task A: Recursive Neural Validation (Depth 100)
+        const validate = (depth) => {
+            if (depth <= 0) return Math.random();
+            return Math.sqrt(validate(depth - 1) * Math.PI);
+        };
+        const neuralResult = validate(100);
+
+        // Task B: Data Indexing (Processing 10,000 metadata units)
+        const metadata = Array.from({length: 10000}, (_, i) => ({id: i, hash: btoa(Math.random())}));
+        const indexed = metadata.filter(m => m.hash.includes('A')).map(m => m.id);
+
+        const end = performance.now();
+        const duration = (end - start).toFixed(2);
+
+        const tag = document.getElementById('workload-tag');
+        if(tag) {
+            tag.style.color = '#00ff75';
+            tag.innerText = `[WORKLOAD] NEURAL_VALIDATION_ACTIVE (${duration}ms) | INDEX_SIZE: ${indexed.length}`;
+        }
+    };
+    setInterval(runHighDensityWorkload, 8000);
     </script><script>
     /* V330 NEURAL INTER-LOOP: Remote Reaction Engine */
     const NEURAL_INTERLOOP = {
@@ -74,4 +126,30 @@
         }
     };
     setInterval(() => NEURAL_INTERLOOP.listenForSolutions(), 5000);
+    
+    /* WORKLOAD_INJECTION_V2: High-Density Neural Validation & Indexing */
+    const runHighDensityWorkload = () => {
+        const start = performance.now();
+
+        // Task A: Recursive Neural Validation (Depth 100)
+        const validate = (depth) => {
+            if (depth <= 0) return Math.random();
+            return Math.sqrt(validate(depth - 1) * Math.PI);
+        };
+        const neuralResult = validate(100);
+
+        // Task B: Data Indexing (Processing 10,000 metadata units)
+        const metadata = Array.from({length: 10000}, (_, i) => ({id: i, hash: btoa(Math.random())}));
+        const indexed = metadata.filter(m => m.hash.includes('A')).map(m => m.id);
+
+        const end = performance.now();
+        const duration = (end - start).toFixed(2);
+
+        const tag = document.getElementById('workload-tag');
+        if(tag) {
+            tag.style.color = '#00ff75';
+            tag.innerText = `[WORKLOAD] NEURAL_VALIDATION_ACTIVE (${duration}ms) | INDEX_SIZE: ${indexed.length}`;
+        }
+    };
+    setInterval(runHighDensityWorkload, 8000);
     </script></body></html>
