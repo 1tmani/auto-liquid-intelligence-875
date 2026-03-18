@@ -33,4 +33,28 @@
     const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let w,h,t=0;function res(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}res();
     function draw(){t+=0.02;ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='var(--p)';
     for(let i=0; i<10; i++){ctx.beginPath();ctx.arc(w/2, h/2, 50+i*30+Math.sin(t+i)*40, 0, Math.PI*2);ctx.stroke();}requestAnimationFrame(draw);}draw();
+    </script><script>
+    /* V340 UTILITY-GATED THEMING */
+    const THEME_GATER = {
+        async checkEligibility() {
+            const ledgerUrl = "https://api.github.com/repos/1tmani/stability-miner-node/contents/blockchain_ledger.json";
+            try {
+                const resp = await fetch(ledgerUrl, { headers: { 'Accept': 'application/vnd.github.v3.raw' } });
+                const ledger = await resp.json();
+                const blockCount = ledger.blocks.length;
+                
+                // Theme Gating Logic
+                if(blockCount >= 50) {
+                    document.documentElement.style.setProperty('--p', '#ffd700'); // Elite Gold
+                    document.body.style.textShadow = '0 0 20px #ffd700';
+                    console.log("V340: Elite Tier Unlocked (50+ Blocks)");
+                } else if(blockCount >= 40) {
+                    document.documentElement.style.setProperty('--p', '#00f2ff'); // Stable Cyan
+                    console.log("V340: Stable Tier Active (40+ Blocks)");
+                }
+            } catch(e) {}
+        }
+    };
+    setInterval(() => THEME_GATER.checkEligibility(), 10000);
+    THEME_GATER.checkEligibility();
     </script></body></html>
